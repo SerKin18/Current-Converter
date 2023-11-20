@@ -582,3 +582,9 @@ h1 {
   display: none;
 }
 
+.content {
+  display: none;
+}
+.content.show {
+  display: block;
+}
