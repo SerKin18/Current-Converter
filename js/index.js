@@ -1,4 +1,4 @@
-// import { renderCurrencyItem } from "./markups";
+
 
 const selects = document.querySelectorAll(".select"),
   inputAmount = document.getElementById("amount"),
@@ -67,7 +67,7 @@ const fetchLatest = async () => {
   try {
     const response = await fetch(`${url}${state.key}latest/${code}`);
     const data = await response.json();
-    if (data.result == "success") {
+    if (data.result === "success") {
       state.currency = { ...state.currency, ...data };
       insertCurrencies();
     }
