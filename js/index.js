@@ -1,4 +1,12 @@
 
+import variables from "./variables.js";
+import state from "./state.js";
+import { handleChange } from "./convert.js";
+import { fetchLatest } from "./single.js";
+
+const { selects, tabs } = variables;
+
+
 
 const selects = document.querySelectorAll(".select"),
   inputAmount = document.getElementById("amount"),
@@ -271,6 +279,7 @@ const handleChange = ({ target: { value, name } }) => {
     [name]: value,
   };
 };
+>>>>>>> b9db00a4292382b87adfda543e188d342639f2d7
 
 const renderCodeList = () => {
   selects.forEach((select) => {
@@ -285,7 +294,7 @@ const renderCodeList = () => {
   });
 };
 
-const fetchCodes = async () => {
+export const fetchCodes = async () => {
   try {
     const response = await fetch(`${state.url}${state.key}/codes`);
     const data = await response.json();
@@ -298,16 +307,16 @@ const fetchCodes = async () => {
     console.log(err);
   }
 };
-fetchCodes();
+export const handleTabClick = ({ currentTarget: target }) => {
+  const { tab } = target.dataset;
+  const children = document.querySelectorAll(".content");
+  if (!tab || tab === state.currentTab) return;
+  tabs.forEach((item) => item.classList.remove("active"));
+  target.classList.add("active");
 
-inputAmount.addEventListener("keyup", handleInput);
-form.addEventListener("submit", handleSubmit);
-switchCurrenciesButton.addEventListener("click", switchCurrencies);
-tabs.forEach((tab) => {
-  tab.addEventListener("click", handleTabClick);
-});
-currentCurrency.addEventListener("click", handleActionClick),
-  currentCurrencyList.addEventListener("click", handleActionClick),
-  singleSelect.addEventListener("change", handleSingleSelectChange),
-  addButton.addEventListener("click", addCurrency),
-  addCurrencySelect.addEventListener("change", handleAddSelectChange);
+  for (const child of children) {
+    if (child.dataset.child === tab) child.classList.add("show");
+    else child.classList.remove("show");
+  }
+  state.currentTab = tab;
+};
