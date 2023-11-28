@@ -31,7 +31,7 @@ input[type=number] {
   box-sizing: border-box;
 }
 
-.container {
+/* .container {
   width: 1024px;
   margin: 0 auto;
   min-height: 100vh;
@@ -47,9 +47,9 @@ input[type=number] {
     width: 100vw;
     padding: 5px;
   }
-}
+} */
 
-h1 {
+/* h1 {
   width: 100%;
   text-align: center;
   font-size: 22px;
@@ -63,9 +63,9 @@ h1 {
     font-size: 17px;
     line-height: 24px;
   }
-}
+} */
 
-.main {
+/* .main {
   width: 100%;
   position: relative;
 }
@@ -113,7 +113,7 @@ h1 {
   .wrapper {
     padding: 10px;
   }
-}
+} */
 
 .tabs {
   display: flex;
