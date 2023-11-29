@@ -115,7 +115,7 @@ input[type=number] {
   }
 } */
 
-.tabs {
+/* .tabs {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,7 +175,7 @@ input[type=number] {
 }
 .tab.active::after {
   width: 100%;
-}
+} */
 
 .form {
   margin-top: 40px;

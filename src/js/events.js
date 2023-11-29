@@ -21,12 +21,12 @@ const {
 } = variables;
 
 fetchCodes();
-inputAmount.addEventListener("keyup", handleInput);
+// inputAmount.addEventListener("keyup", handleInput);
 form.addEventListener("submit", handleSubmit);
 switchCurrenciesButton.addEventListener("click", switchCurrencies);
-tabs.forEach((tab) => {
-  tab.addEventListener("click", handleTabClick);
-});
+// tabs.forEach((tab) => {
+//   tab.addEventListener("click", handleTabClick);
+// });
 currentCurrency.addEventListener("click", handleActionClick),
   currentCurrencyList.addEventListener("click", handleActionClick),
   singleSelect.addEventListener("change", handleSingleSelectChange),

@@ -3,7 +3,7 @@ import Select from "../select/select";
 
 export default function SinglePage() {
   return (
-    <div className="content show " data-child="single">
+    <div className="content" data-child="single">
       <div className="currency-wrapper">
         <div className="currency-single">
           <Select SelectId={"singleSelect"} />

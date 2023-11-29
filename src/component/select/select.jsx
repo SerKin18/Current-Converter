@@ -1,3 +1,7 @@
+import { useDispatch, useSelector } from "react-redux";
+
+
+
 export default function Select({ SelectId, selectName }) {
   return (
     <select
@@ -5,7 +9,7 @@ export default function Select({ SelectId, selectName }) {
       className="select"
       id={SelectId}
     >
-      <option value="" disabled hidden>
+      <option value=""  hidden>
         Choose currency
       </option>
     </select>

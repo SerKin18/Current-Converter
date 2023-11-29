@@ -1,0 +1,62 @@
+.tabs {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+ }
+ .tabs:before {
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	position: absolute;
+	width: 70%;
+	height: 2px;
+	min-width: 660px;
+	background: linear-gradient(90deg, rgba(217, 217, 217, 0) 12.5%, #ffffff 51.57%, rgba(255, 255, 255, 0) 86.98%);
+	opacity: 0.2;
+	content: "";
+ }
+ @media screen and (max-width: 1100px) {
+	.tabs:before {
+	  min-width: unset;
+	  width: 100%;
+	}
+ }
+ 
+ .tab {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	-moz-column-gap: 10px;
+		  column-gap: 10px;
+	padding: 15px 10px;
+	opacity: 0.5;
+	transition: opacity 0.25s ease;
+	position: relative;
+ }
+ .tab:after {
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	position: absolute;
+	width: 0;
+	height: 2px;
+	content: "";
+	transition: width 0.25s ease;
+	background: linear-gradient(90deg, rgba(255, 88, 95, 0) 0%, #fa5897 51.57%, rgba(255, 88, 95, 0) 100%);
+ }
+ .tab-icon {
+	width: 18px;
+	height: 18px;
+ }
+ .tab:hover {
+	opacity: 0.8;
+ }
+ .tab.active {
+	opacity: 1;
+ }
+ .tab.active::after {
+	width: 100%;
+ }
+ 
