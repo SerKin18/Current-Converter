@@ -1,5 +1,5 @@
 export default {
-  key: "23158d58a9bf65ceebb6976c",
+  //   key: "23158d58a9bf65ceebb6976c",
   url: "https://v6.exchangerate-api.com/v6/",
   codes: [],
   pair: {

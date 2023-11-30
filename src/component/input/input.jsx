@@ -1,4 +1,12 @@
+import { useDispatch} from "react-redux";
+
 function Input() {
+
+  const dispatch = useDispatch();
+  const handleInput = ({ target: { value, name } }) => {
+    dispatch({ type: `${name}`, payload: Number(value) });
+  };
+
   return (
     <div className="form-group">
       <label htmlFor="amount">Amount</label>
@@ -8,6 +16,7 @@ function Input() {
         id="amount"
         required
         placeholder="1.00"
+        onChange={handleInput}
       />
     </div>
   );

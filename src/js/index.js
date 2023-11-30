@@ -7,42 +7,42 @@ import { fetchLatest } from "./single.js";
 const { selects, tabs } = variables;
 
 
-const renderCodeList = () => {
-  selects.forEach((select) => {
-    state.codes.forEach(([code]) => {
-      const element = document.createElement("option");
-      element.value = code;
-      element.textContent = code;
-      select.insertAdjacentElement("beforeend", element);
-    });
-    const name = select.getAttribute("name");
-    name && select.addEventListener("change", handleChange);
-  });
-};
+// const renderCodeList = () => {
+//   selects.forEach((select) => {
+//     state.codes.forEach(([code]) => {
+//       const element = document.createElement("option");
+//       element.value = code;
+//       element.textContent = code;
+//       select.insertAdjacentElement("beforeend", element);
+//     });
+//     const name = select.getAttribute("name");
+//     name && select.addEventListener("change", handleChange);
+//   });
+// };
 
-export const fetchCodes = async () => {
-  try {
-    const response = await fetch(`${state.url}${state.key}/codes`);
-    const data = await response.json();
-    if (data.result === "success") {
-      state.codes = data.supported_codes;
-      renderCodeList();
-      fetchLatest();
-    }
-  } catch (err) {
-    console.log(err);
-  }
-};
-export const handleTabClick = ({ currentTarget: target }) => {
-  const { tab } = target.dataset;
-  const children = document.querySelectorAll(".content");
-  if (!tab || tab === state.currentTab) return;
-  tabs.forEach((item) => item.classList.remove("active"));
-  target.classList.add("active");
+// export const fetchCodes = async () => {
+//   try {
+//     const response = await fetch(`${state.url}${state.key}/codes`);
+//     const data = await response.json();
+//     if (data.result === "success") {
+//       state.codes = data.supported_codes;
+//       renderCodeList();
+//       fetchLatest();
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+// export const handleTabClick = ({ currentTarget: target }) => {
+//   const { tab } = target.dataset;
+//   const children = document.querySelectorAll(".content");
+//   if (!tab || tab === state.currentTab) return;
+//   tabs.forEach((item) => item.classList.remove("active"));
+//   target.classList.add("active");
 
-  for (const child of children) {
-    if (child.dataset.child === tab) child.classList.add("show");
-    else child.classList.remove("show");
-  }
-  state.currentTab = tab;
-};
+//   for (const child of children) {
+//     if (child.dataset.child === tab) child.classList.add("show");
+//     else child.classList.remove("show");
+//   }
+//   state.currentTab = tab;
+// };
