@@ -4,30 +4,25 @@ import Input from "../input/input";
 import variables from "../../js/variables";
 import { useDispatch, useSelector } from "react-redux";
 
-const { resultFrom, resultTo, rateConversion, rateLast, formResults } =
-  variables;
+const { rateConversion, rateLast, formResults } = variables;
 
 function Form() {
   const dispatch = useDispatch();
-  const {
-    key,
-    url,
-    amount,
-    loading,
-	 codes,
-    pair: { from, to },
-  } = useSelector((state) => state);
-  console.log(amount);
+  const { from, to } = useSelector((state) => state.pair);
+  const loading = useSelector((state) => state.loading);
+  const amount = useSelector((state) => state.amount);
+  const url = useSelector((state) => state.url);
+  const key = useSelector((state) => state.key);
+  const codes = useSelector((state) => state.codes);
 
   const handleSubmit = async (e) => {
     e?.preventDefault();
-
     // const {
     // 	amount,
     // 	pair: { from, to },
     //  } = state;
     console.log(loading);
-    dispatch({ case: "loading", payload: true });
+    dispatch({ type: "loading", payload: true });
     console.log(loading);
     if (!amount || !from || !to) return;
     try {
@@ -71,6 +66,12 @@ function Form() {
     return new Intl.DateTimeFormat("en-US", options).format(new Date(date));
   };
 
+  let resultFrom = "",
+    resultTo = "",
+    rateConversion = "",
+    rateLast = "",
+    formResults = "form-results";
+
   const insertResults = ({
     base_code: baseCode,
     target_code: targetCode,
@@ -80,24 +81,35 @@ function Form() {
   }) => {
     const from = {
       code: baseCode,
-      amount: state.amount,
-      full: getFullTitle(state.codes, baseCode),
+      amount: amount,
+      full: getFullTitle(codes, baseCode),
     };
     const to = {
       code: targetCode,
       amount: result,
-      full: getFullTitle(state.codes, targetCode),
+      full: getFullTitle(codes, targetCode),
     };
 
-    resultFrom.innerHTML = renderResultForm(from);
-    resultTo.innerHTML = renderResultForm(to);
+    resultFrom = renderResultForm(from);
+    resultTo = renderResultForm(to);
 
     const baseValue = formatToCurrency(baseCode, 1);
     const targetValue = formatToCurrency(targetCode, rate);
 
-    rateConversion.innerHTML = `${baseValue}+${targetValue}`;
-    rateLast.innerHTML = `Last update ${convertTime(time)}`;
-    formResults.classList.add("show");
+    rateConversion = `${baseValue}+${targetValue}`;
+    rateLast = `Last update ${convertTime(time)}`;
+    formResults += "show";
+  };
+
+  const switchCurrencies = () => {
+    if (!to || !from) return;
+    console.log(from, to);
+    dispatch({
+      type: "removePair",
+      payload: { to: from, from: to },
+    });
+
+    console.log(from, to);
   };
 
   return (
@@ -106,18 +118,25 @@ function Form() {
         <Input />
         <div className="form-selects">
           <FormSelect nameFor={"from"} />
-          <div className="form-select__icon switch-currencies">
-            <img src="./images/arrows.png" alt="img-arrow" />
+          <div
+            className="form-select__icon switch-currencies"
+            onClick={switchCurrencies}
+          >
+            <img src="../../../images/arrows.png" alt="img-arrow" />
           </div>
           <div className="form-selects">
             <FormSelect nameFor={"to"} />
           </div>
         </div>
       </div>
-      <FormInfo />
+      <FormInfo
+        resultFrom={resultFrom}
+        resultTo={resultTo}
+        classFormResults={formResults}
+      />
       <div className="rate-information">
-        <div className="rate-conversion"></div>
-        <div className="rate-last"></div>
+        <div className="rate-conversion">{rateConversion}</div>
+        <div className="rate-last">{rateLast}</div>
       </div>
     </form>
   );

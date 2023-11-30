@@ -1,11 +1,16 @@
 import "./tabs.css";
 import { useDispatch, useSelector } from "react-redux";
 
+
+
 function Tabs() {
+
+
   const dispatch = useDispatch();
   const stateTabs = useSelector((state) => state.currentTab);
   console.log(stateTabs);
 
+  
   const handleTabClick = (e) => {
     // console.log(e.target.dataset);
     const tab = e.target.closest("[data-tab]").dataset.tab;

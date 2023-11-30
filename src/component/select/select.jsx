@@ -1,17 +1,27 @@
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 
-
-
-export default function Select({ SelectId, selectName }) {
+export default function Select({ selectId, selectName, selectPair, value }) {
+ 
+	
+	const currencies = useSelector((state) => state.currencies);
   return (
     <select
-      name={selectName ? selectName : "name"}
+      name={selectName}
       className="select"
-      id={SelectId}
+      id={selectId}
+      onChange={selectPair}
+      value={value}
     >
-      <option value=""  hidden>
+      <option value="" hidden>
         Choose currency
       </option>
+      {currencies.map((item) => {
+        return (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        );
+      })}
     </select>
   );
 }

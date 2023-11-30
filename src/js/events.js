@@ -22,7 +22,7 @@ const {
 
 fetchCodes();
 // inputAmount.addEventListener("keyup", handleInput);
-form.addEventListener("submit", handleSubmit);
+// form.addEventListener("submit", handleSubmit);
 switchCurrenciesButton.addEventListener("click", switchCurrencies);
 // tabs.forEach((tab) => {
 //   tab.addEventListener("click", handleTabClick);

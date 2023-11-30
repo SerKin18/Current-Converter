@@ -44,37 +44,37 @@ const insertResults = ({
   rateLast.innerHTML = `Last update ${convertTime(time)}`;
   formResults.classList.add("show");
 };
-export const handleSubmit = async (e) => {
-  e?.preventDefault();
-  const {
-    amount,
-    pair: { from, to },
-  } = state;
-  state.loading = true;
-  if (!amount || !from || !to) return;
-  try {
-    const response = await fetch(
-      `${state.url}${state.key}/pair/${from}/${to}/${state.amount}`
-    );
-    const data = await response.json();
-    if (data.result === "success") {
-      insertResults(data);
-      state.loading = false;
-    }
-  } catch (err) {
-    console.log(err);
-  }
-};
+// export const handleSubmit = async (e) => {
+//   e?.preventDefault();
+//   const {
+//     amount,
+//     pair: { from, to },
+//   } = state;
+//   state.loading = true;
+//   if (!amount || !from || !to) return;
+//   try {
+//     const response = await fetch(
+//       `${state.url}${state.key}/pair/${from}/${to}/${state.amount}`
+//     );
+//     const data = await response.json();
+//     if (data.result === "success") {
+//       insertResults(data);
+//       state.loading = false;
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
-export const switchCurrencies = () => {
-  const {
-    pair: { from, to },
-  } = state;
-  if (!to || !from) return;
-  state.pair = {
-    to: from,
-    from: to,
-  };
-  toSelect.value = from;
-  fromSelect.value = to;
-};
+// export const switchCurrencies = () => {
+//   const {
+//     pair: { from, to },
+//   } = state;
+//   if (!to || !from) return;
+//   state.pair = {
+//     to: from,
+//     from: to,
+//   };
+//   toSelect.value = from;
+//   fromSelect.value = to;
+// };

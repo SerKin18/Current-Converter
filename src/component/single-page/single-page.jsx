@@ -6,14 +6,14 @@ export default function SinglePage() {
     <div className="content" data-child="single">
       <div className="currency-wrapper">
         <div className="currency-single">
-          <Select SelectId={"singleSelect"} />
+          <Select  selectName={'single'} selectId={"singleSelect"} />
           <div className="currency-single__item"></div>
         </div>
         <div className="currency-list"></div>
       </div>
       <div className="currency-add">
         <Button className={"currency-add__button"} itemName={"Add currency"} />
-        <Select SelectId={"AddCurrencySelect"} />
+        <Select  selectName={'addCurrency'} selectId={"AddCurrencySelect"} />
       </div>
     </div>
   );
