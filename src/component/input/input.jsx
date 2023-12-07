@@ -1,4 +1,5 @@
 import { useDispatch} from "react-redux";
+import './input.css'
 
 function Input() {
 

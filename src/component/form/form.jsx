@@ -3,6 +3,7 @@ import FormInfo from "../form-info/form-info";
 import Input from "../input/input";
 import variables from "../../js/variables";
 import { useDispatch, useSelector } from "react-redux";
+import './form.css'
 
 const { rateConversion, rateLast, formResults } = variables;
 

@@ -1,4 +1,6 @@
 import {  useSelector } from "react-redux";
+import './select.css'
+
 
 export default function Select({ selectId, selectName, selectPair, value }) {
  
