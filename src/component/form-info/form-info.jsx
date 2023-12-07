@@ -1,4 +1,6 @@
 import Button from "../button/button";
+import './form-info'
+
 
 function FormInfo({resultFrom,resultTo,classFormResults}) {
   return (

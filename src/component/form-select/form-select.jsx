@@ -1,6 +1,8 @@
 import Select from "../select/select";
 import { useDispatch, useSelector } from "react-redux";
 
+import "./form-select.css";
+
 function FormSelect({ nameFor }) {
   const dispatch = useDispatch();
   const { from, to } = useSelector((state) => state.pair);

@@ -1,0 +1,18 @@
+.form-group {
+	width: 320px;
+ }
+ @media screen and (max-width: 700px) {
+	.form-group {
+	  width: 100%;
+	}
+ }
+ .form-group input {
+	width: 100%;
+	background: #2b2440;
+	border-radius: 12px;
+	font-weight: 600;
+	line-height: 19px;
+	color: #f5f5f5;
+	border: 2px solid rgba(255, 88, 95, 0.35);
+	padding: 14px;
+ }
